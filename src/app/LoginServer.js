@@ -16,7 +16,7 @@ export default class LoginServer {
     this.app      = express();
     this.conn     = null;
     this.root     = __dirname;
-    this.port     = 44500;
+    this.port     = 4500;
     this.server   = http.createServer(this.app);
     this.session  = {};
     this.express  = express;
@@ -25,7 +25,7 @@ export default class LoginServer {
     if(argv.indexOf("-p") != -1) { this.port = argv[(argv.indexOf("-p") + 1)]; }
 
     this.configuration = new ConfReader().read('dist/conf/'+this.env+'.yml');
-    this.logger = LoggerFactory.get('bunyan', {name:'DataServer', level: this.configuration.logger.level});
+    this.logger = LoggerFactory.get('bunyan', {name:'LoginServer', level: this.configuration.logger.level});
   }
 
   start() {
@@ -42,7 +42,7 @@ export default class LoginServer {
   	}
     
     this.server.listen(this.app.get('port'), () => {
-      this.logger.info('DataServer listening on port '+this.app.get('port')+' in '+this.env+' mode');
+      this.logger.info('LoginServer listening on port '+this.app.get('port')+' in '+this.env+' mode');
     });
   }
 
