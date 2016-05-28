@@ -50,7 +50,7 @@ export default class LoginServer {
     let index = 0;
     for (index in this.server.session) {
       let session = this.server.session[index];
-      session.socket.destroy();
+      session.socket.disconnect(true);
     }
     this.conn.close();
     this.server.close();
