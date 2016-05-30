@@ -51,7 +51,7 @@ export default (server, session) => {
           }
           
           session.user = user;
-          socket.emit('login', {'status': LoginStatus.success, 'code': statusCode("success")});
+          socket.emit('login', {'status': LoginStatus.success, 'code': statusCode("success"), 'user': user});
 
           server.logger.info("Login Success.");
           
